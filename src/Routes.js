@@ -1,13 +1,17 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Settings from './components/connect-nav/Settings';
+import Settings from './components/connect-nav/Settings/Settings';
 
 const Main = () => {
-    <h1 style={{ textAlign: 'center', color: 'darkcyan' }}>Welcome to my React Application</h1>
+    return (
+        <h1 style={{ textAlign: 'center', color: 'darkcyan' }}>Welcome to my React Application</h1>
+    )
 }
 
 const Home = () => {
-    <h1></h1>
+    return (
+        <h1 style={{ textAlign: 'center', color: 'darkcyan' }}>Home Page!!!!</h1>
+    )
 }
 
 const Routes = () => {

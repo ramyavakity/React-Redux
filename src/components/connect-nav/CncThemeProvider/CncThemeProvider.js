@@ -15,7 +15,7 @@ const CncThemeProvider = ({ childern, themeName, generateClassName }) => {
     )
 }
 
-CncThemeProvider.PropTypes = {
+CncThemeProvider.propTypes = {
     childern: PropTypes.any,
     themeName: PropTypes.string,
     generateClassName: PropTypes.func

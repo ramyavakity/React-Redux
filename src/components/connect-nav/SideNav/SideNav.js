@@ -73,7 +73,9 @@ const styles = theme => ({
 
 })
 
-
+class SideNav extends PureComponent{
+    
+}
 export default withRouter(
     compose(withStyles(styles, { withTheme: true }), withWidth())(SideNav)
 );

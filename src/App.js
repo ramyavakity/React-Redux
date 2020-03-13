@@ -5,8 +5,8 @@ import { connect } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import { lightTheme, darkTheme } from './components/connect-theme';
 import Routes from './Routes';
-import Canvas from './components/connect-nav/Canvas';
-import CncThemeProvider from './components/connect-nav/CncThemeProvider';
+import Canvas from './components/connect-nav/Canvas/Canvas';
+import CncThemeProvider from './components/connect-nav/CncThemeProvider/CncThemeProvider';
 import './index.css';
 
 const GlobalStyle = createGlobalStyle`

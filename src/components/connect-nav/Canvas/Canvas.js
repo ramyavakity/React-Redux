@@ -54,7 +54,7 @@ class Canvas extends React.Component {
     }
 }
 
-Canvas.PropTypes = {
+Canvas.propTypes = {
     children: PropTypes.any,
     nopadding: PropTypes.bool,
     desktop: PropTypes.bool

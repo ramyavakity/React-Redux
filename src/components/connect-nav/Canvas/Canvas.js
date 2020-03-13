@@ -1,9 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { styled, withStyles } from "@material-ui/core/styles";
-import navigation from "../navigation";
-import { settings } from "../../static/data";
-import SideNav from "./SideNav";
+import navigation from "../../navigation";
+import { settings } from "../../../static/data";
+import SideNav from "../SideNav/SideNav";
 
 const Desktop = styled("div")(props => {
     return {

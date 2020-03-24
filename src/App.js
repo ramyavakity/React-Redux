@@ -3,7 +3,7 @@ import styled, { createGlobalStyle, ThemeProvider } from 'styled-components';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
-import { lightTheme, darkTheme } from './components/connect-theme';
+import { lightTheme, darkTheme } from './components/connect-theme/index';
 import Routes from './Routes';
 import Canvas from './components/connect-nav/Canvas/Canvas';
 import CncThemeProvider from './components/connect-nav/CncThemeProvider/CncThemeProvider';

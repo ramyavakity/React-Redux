@@ -1,18 +1,18 @@
 const amber = require("./cncPalette/amber.js");
 const blue = require("./cncPalette/blue.js");
-const blueGrey = require("./cncPalette/blueGrey");
-const cyan = require("./cncPalette/cyan");
-const deepOrange = require("./cncPalette/deepOrange");
-const deepPurple = require("./cncPalette/deepPurple");
-const green = require("./cncPalette/green");
-const grey = require("./cncPalette/grey");
-const indigo = require("./cncPalette/indigo");
-const orange = require("./cncPalette/orange"),
-const pink = require("./cncPalette/pink");
-const purple = require("./cncPalette/purple");
-const red = require("./cncPalette/red");
-const teal = require("./cncPalette/teal");
-const yellow = require("./cncPalette/yellow");
+const blueGrey = require("./cncPalette/blueGrey.js");
+const cyan = require("./cncPalette/cyan.js");
+const deepOrange = require("./cncPalette/deepOrange.js");
+const deepPurple = require("./cncPalette/deepPurple.js");
+const green = require("./cncPalette/green.js");
+const grey = require("./cncPalette/grey.js");
+const indigo = require("./cncPalette/indigo.js");
+const orange = require("./cncPalette/orange.js"),
+const pink = require("./cncPalette/pink.js");
+const purple = require("./cncPalette/purple.js");
+const red = require("./cncPalette/red.js");
+const teal = require("./cncPalette/teal.js");
+const yellow = require("./cncPalette/yellow.js");
 
 module.exports = {
     themeName: "dark",
@@ -143,28 +143,28 @@ module.exports = {
             fontWeight: 400,
             fontFamily: "Lato , Helvetica, Arial, sans-serif",
             color: "#fff",
-            letterSpacinf: 0
+            letterSpacing: 0
         },
         subtitle2: {
             fontSize: "1rem",
             fontWeight: 400,
             fontFamily: "Lato , Helvetica, Arial, sans-serif",
             color: "#fff",
-            letterSpacinf: 0
+            letterSpacing: 0
         },
         body1: {
             fontSize: "0.9375rem",
             fontWeight: 400,
             fontFamily: "Lato , Helvetica, Arial, sans-serif",
             color: "#fff",
-            letterSpacinf: 0
+            letterSpacing: 0
         },
         body2: {
             fontSize: "0.9375rem",
             fontWeight: 400,
             fontFamily: "Lato , Helvetica, Arial, sans-serif",
             color: "#fff",
-            letterSpacinf: 0
+            letterSpacing: 0
         },
         button: {
             fontSize: "0.875rem",
@@ -177,7 +177,7 @@ module.exports = {
             fontWeight: 400,
             fontFamily: "Lato , Helvetica, Arial, sans-serif",
             color: "#fff",
-            letterSpacinf: 0.2
+            letterSpacing: 0.2
         },
         overline: {
             fontSize: "0.875rem",

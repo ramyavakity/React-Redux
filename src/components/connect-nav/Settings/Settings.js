@@ -5,14 +5,14 @@ import Switch from '../../../../node_modules/@material-ui/core/Switch';
 import Paper from '../../../../node_modules/@material-ui/core/Paper';
 import FormControlLabel from '../../../../node_modules/@material-ui/core/FormControlLabel';
 import Typography from '../../../../node_modules/@material-ui/core/Typography';
-import { fetchSettingsSuccess } from '../../connect-navmiddleware/settings.js';
+import { fetchSettingsSuccess } from '../../connect-navmiddleware/reducers/settings';
 import PropTypes from 'prop-types';
 
 const Wrapper = styled.div``
 const StyledFormControlLabel = styled(FormControlLabel)`
     margin:auto;
 `
-const Container = styles(Paper)`
+const Container = styled(Paper)`
    display:grid;
    gird-template-rows:40px auto;
    max-width:600px;
@@ -78,7 +78,7 @@ const mapDispatchToProps = dispatch => ({
     onToggleChange: payload => dispatch(fetchSettingsSuccess(payload))
 })
 
-Settings.PropTypes = {
+Settings.propTypes = {
     onToggleChange: PropTypes.func,
     language: PropTypes.bool,
     theme: PropTypes.bool

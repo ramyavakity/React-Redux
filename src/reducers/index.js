@@ -1,8 +1,9 @@
 import { combineReducers } from 'redux';
 import sample from './sampleReducer';
+import settings from '../../src/components/connect-navmiddleware/reducers/settings'
 
 const rootReducer = combineReducers({
-    sample
+    settings,sample
 })
 
 export default rootReducer;

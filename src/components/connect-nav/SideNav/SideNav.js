@@ -20,9 +20,13 @@ import Fade from "@material-ui/core/Fade";
 import { NavLink, withRouter } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronRight } from "fa5-pro-solids/faChevronRight";
-import { faChevronUp } from "fa5-pro-solids/faChevronUp";
-import { faChevronDown } from "fa5-pro-solids/faChevronDown";
+// import { faChevronRight } from "fa5-pro-solids/faChevronRight";
+// import { faChevronUp } from "fa5-pro-solids/faChevronUp";
+// import { faChevronDown } from "fa5-pro-solids/faChevronDown";
+import {faChevronDown} from "@fortawesome/free-solid-svg-icons"
+import {faChevronUp} from "@fortawesome/free-solid-svg-icons"
+import {faChevronRight} from "@fortawesome/free-solid-svg-icons"
+
 
 const drawerWidth = 270;
 

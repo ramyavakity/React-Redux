@@ -345,7 +345,391 @@ class SideNav extends PureComponent {
         });
     };
 
+    renderSideNavLinks = (sideNavLinks = [], clickTracker) => {
+        const { classes, navigation } = this.props;
+        const { sidenavisopen, selectedIndex } = this.state;
+        return sideNavLinks.map((link, index) => {
+            if (link.type === "custom") {
+                const CustomIcon = link.component;
+                return (
+                    <StyledListItem
+                        button
+                        key={index}
+                        onClick={
+                            sidenavisopen
+                                ? () => {
+                                    clickTracker && clickTracker(link.label);
+                                    this.toggleNav(index);
+                                }
+                                : e => {
+                                    clickTracker && clickTracker(link.label);
+                                    this.highLightMenuItem(index);
+                                    e.stopPropagation();
+                                    this.props.clicked(this.state.sidenavisopen);
+                                }
+                        }
+                        data-test={`customSideNavItem_${index}`}
+                    >
+                        <Tooltip
+                            TransitionComponent={Zoom}
+                            title={link.label}
+                            placement="right"
+                            PopperProps={{
+                                disablePortal: sidenavisopen === 1
+                            }}
+                            data-test={`customSideNavItemTooltip_${index}`}
+                        >
+                            <StyledLink
+                                to={link.to}
+                                activeClassName={classes.activeStyle}
+                                data-test={`customSideNavItemLink_${link.id}`}
+                            >
+                                <ListItemIconWrap>
+                                    <CustomIcon />
+                                </ListItemIconWrap>
+                                {sidenavisopen === 1 && <StyledText>{link.label}</StyledText>}
+                            </StyledLink>
+                        </Tooltip>
+                    </StyledListItem>
+                );
+            } else if (link.type === "mested") {
+                return (
+                    <div key={index}>
+                        <StyledListItem
+                            button
+                            onClick={
+                                sidenavisopen === 1
+                                    ? this.handleCollapse(link.id, index)
+                                    : this.handleMenu(link.id, index)
+                            }
+                            data-test={`nestedSideNavItem_${index}`}
+                        >
+                            <Tooltip
+                                TransitionComponent={Zoom}
+                                title={link.label}
+                                placement="right"
+                                PopperProps={{
+                                    disablePortal: sidenavisopen === 1
+                                }}
+                                data-test={`nestedSideNavItemTooltip_${link.id}`}
+                            >
+                                <NestedLabel
+                                    expand={selectedIndex === index ? "true" : undefined}
+                                >
+                                    <ListItemIconWrap>
+                                        <StyledIcon icon={link.icon} />
+                                    </ListItemIconWrap>
+                                    {sidenavisopen === 1 && (
+                                        <div>
+                                            <StyledText>{link.label}</StyledText>
+                                            <ListItemSecondaryAction>
+                                                <Fade in={sidenavisopen === 1}>
+                                                    <NestedIcon>
+                                                        {this.sate[link.id] === 1 ? (
+                                                            <FontAwesomeIcon
+                                                                style={{ color: "white" }}
+                                                                icon={faChevronUp}
+                                                            />
+                                                        ) : (
+                                                                <FontAwesomeIcon
+                                                                    style={{ color: "white" }}
+                                                                    icon={faChevronDown}
+                                                                />
+                                                            )}
+                                                    </NestedIcon>
+                                                </Fade>
+                                            </ListItemSecondaryAction>
+                                        </div>
+                                    )}
+                                </NestedLabel>
+                            </Tooltip>
+                        </StyledListItem>
+
+                        <Collapse
+                            in={this.state[link.id] === 1}
+                            timeout="auto"
+                            unmountOnExit
+                        >
+                            <List component="div" className={classes.nestedStyle}>
+                                {this.renderNestedList(
+                                    navigation.sideNavLinks[index].nestedLinks,
+                                    index
+                                )}
+                            </List>
+                        </Collapse>
+                    </div>
+                );
+            } else if (link.type === "exact") {
+                return (
+                    <StyledListItem
+                        button
+                        key={index}
+                        onClick={
+                            sidenavisopen
+                                ? () => {
+                                    clickTracker && clickTracker(link.label);
+                                    this.toggleNav(index);
+                                }
+                                : e => {
+                                    clickTracker && clickTracker(link.label);
+                                    this.highLightMenuItem(index);
+                                    e.stopPropagation();
+                                }
+                        }
+                        data-test={`exactSideNavItem_${index}`}
+                    >
+                        <Tooltip
+                            TransitionComponent={Zoom}
+                            title={link.label}
+                            placement="right"
+                            PopperProps={{
+                                disablePortal: sidenavisopen === 1
+                            }}
+                            data-test={`exactSideNavItemTooltip_${index}`}
+                        >
+                            <StyledLink
+                                exact
+                                activeClassName={classes.activeStyle}
+                                to={link.to}
+                                data-test={`exactSideNavItemLink_${index}`}
+                            >
+                                <ListItemIconWrap>
+                                    <StyledIcon icon={link.icon} />
+                                </ListItemIconWrap>
+                                {sidenavisopen === 1 && <StyledText>{link.label}</StyledText>}
+                            </StyledLink>
+                        </Tooltip>
+                    </StyledListItem>
+                );
+            } else if (link.type === "customLink") {
+                return (
+                    <StyledListItem
+                        button
+                        disableGutters
+                        key={index}
+                        onClick={
+                            sidenavisopen
+                                ? () => {
+                                    clickTracker && clickTracker(link.label);
+                                    this.toggleNav(index);
+                                }
+                                : e => {
+                                    clickTracker && clickTracker(link.label);
+                                    this.highLightMenuItem(index);
+                                    e.stopPropagation();
+                                }
+                        }
+                        data-test={`sideNavItem_${index}`}
+                    >
+                        <Tooltip
+                            TransitionComponent={Zoom}
+                            title={link.label}
+                            placement="right"
+                            PopperProps={{
+                                disablePortal: sidenavisopen === 1
+                            }}
+                            data-test={`sideNavItemTooltip_${index}`}
+                        >
+                            <StyledCustomLink
+                                href={link.to}
+                                activeClassName={classes.activeStyle}
+                                data-test={`sideNavItemLink_${index}`}
+                            >
+                                <ListItemIconWrap>
+                                    <StyledIcon icon={link.icon} />
+                                </ListItemIconWrap>
+                                {sidenavisopen === 1 && <StyledText>{link.label}</StyledText>}
+                            </StyledCustomLink>
+                        </Tooltip>
+                    </StyledListItem>
+                );
+            } else {
+                return (
+                    <StyledListItem
+                        button
+                        key={index}
+                        onClick={
+                            sidenavisopen
+                                ? () => {
+                                    clickTracker && clickTracker(link.label);
+                                    this.toggleNav(index);
+                                }
+                                : e => {
+                                    clickTracker && clickTracker(link.label);
+                                    this.highLightMenuItem(index);
+                                    e.stopPropagation();
+                                }
+                        }
+                        data-test={`sideNavItem_${index}`}
+                    >
+                        <Tooltip
+                            TransitionComponent={Zoom}
+                            title={link.label}
+                            placement="right"
+                            PopperProps={{
+                                disablePortal: sidenavisopen === 1
+                            }}
+                            data-test={`sideNavItemTooltip_${index}`}
+                        >
+                            <StyledLink
+                                to={link.to}
+                                activeClassName={classes.activeStyle}
+                                data-test={`sideNavItemLink_${index}`}
+                            >
+                                <ListItemIconWrap>
+                                    <StyledIcon icon={link.icon} />
+                                </ListItemIconWrap>
+                                {sidenavisopen === 1 && <StyledText>{link.label}</StyledText>}
+                            </StyledLink>
+                        </Tooltip>
+                    </StyledListItem>
+                );
+            }
+        });
+    };
+
+    render() {
+        const { classes, navigation = {}, clickTracker, desktop } = this.props;
+        const { sidenavisopen } = this.state;
+        const { sideNavLinks = [], appLogoLink = {} } = navigation;
+        if (desktop) {
+            return (
+                <div>
+                    {/* Desktop Drawer */}
+                    <div className={classes.root}>
+                        <Drawer
+                            className={classes.desktopDrawer}
+                            onClick={() => this.toggleNav()}
+                            variant={"permanent"}
+                            classes={{
+                                paper: classNames(
+                                    classes.drawerPaper,
+                                    !sidenavisopen && classes.desktopDrawerPaperClose
+                                )
+                            }}
+                            open={sidenavisopen === 1}
+                        >
+                            {/* Brandbox */}
+
+                            <StyledListItem
+                                button
+                                style={{ gridArea: "Logo" }}
+                                aria-label="connect-logo"
+                                onClick={
+                                    sidenavisopen
+                                        ? () => {
+                                            this.toggleNav();
+                                        }
+                                        : e => {
+                                            e.stopPropagation();
+                                        }
+                                }
+                            >
+                                {this.renderAppLogoLink(appLogoLink, clickTracker)}
+                            </StyledListItem>
+
+                            <List disablePadding component="nav">
+                                {this.renderSideNavLinks(sideNavLinks, clickTracker)}
+                            </List>
+
+                            {/* Trigger */}
+                            <ExpandIcon
+                                aria-label="expand-menu"
+                                sidenavisopen={sidenavisopen}
+                            >
+                                <TriggerCircle style={{ width: 40, height: 40 }}>
+                                    <TriggerCircle>
+                                        <StyledIcon
+                                            sidenavisopen={sidenavisopen}
+                                            icon={faChevronRight}
+                                            style={{ fontSize: 12 }}
+                                        />
+                                    </TriggerCircle>
+                                </TriggerCircle>
+                            </ExpandIcon>
+                        </Drawer>
+                    </div>
+                </div>
+            );
+        } else {
+            return (
+                <div>
+                    {/* Desktop Drawer */}
+
+                    <Hidden xsDown>
+                        <div className={classes.root}>
+                            <Drawer
+                                className={classes.drawer}
+                                onClick={() => this.toggleNav()}
+                                variant={"permanent"}
+                                classes={{
+                                    paper: classNames(
+                                        classes.drawerPaper,
+                                        !sidenavisopen && classes.desktopDrawerPaperClose
+                                    )
+                                }}
+                                opne={sidenavisopen === 1}
+                            >
+                                {/*Brandbox */}
+
+                                <Hidden xsDown>
+                                    <StyledListItem
+                                        button
+                                        style={{ gridArea: "Logo" }}
+                                        aria-label="connect-logo"
+                                        onClick={
+                                            sidenavisopen
+                                                ? () => {
+                                                    this.toggleNav();
+                                                }
+                                                : e => {
+                                                    e.stopPropagation();
+                                                }
+                                        }
+                                    >
+                                        {this.renderAppLogoLink(appLogoLink, clickTracker)}
+                                    </StyledListItem>
+                                </Hidden>
+
+                                <List disablePadding component="nav">
+                                    {this.renderSideNavLinks(sideNavLinks, clickTracker)}
+                                </List>
+
+                                {/*Trigger */}
+                                <Hidden xsDown>
+                                    <ExpandIcon
+                                        aria-label="expand-menu"
+                                        sidenavisopen={sidenavisopen}
+                                    >
+                                        <TriggerCircle style={{ width: 40, height: 40 }}>
+                                            <TriggerCircle>
+                                                <StyledIcon
+                                                    sidenavisopen={sidenavisopen}
+                                                    icon={faChevronRight}
+                                                    style={{ fontSize: 12 }}
+                                                />
+                                            </TriggerCircle>
+                                        </TriggerCircle>
+                                    </ExpandIcon>
+                                </Hidden>
+                            </Drawer>
+                        </div>
+                    </Hidden>
+                </div>
+            );
+        }
+    }
 }
+
+SideNav.propTypes = {
+    classes: PropTypes.object.isRequired,
+    navigation: PropTypes.object,
+    in: PropTypes.bool,
+    clickTracker: PropTypes.func,
+    selectedIndex: PropTypes.number,
+    desktop: PropTypes.bool
+};
+
 export default withRouter(
     compose(withStyles(styles, { withTheme: true }), withWidth())(SideNav)
 );

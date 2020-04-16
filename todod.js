@@ -1,18 +1,22 @@
 //connect-nav
-Canvas
-cncthemeprovider
+Canvas - done
+cncthemeprovidern- done
 connectnav
+customeTopNav
 mobileuser
-sidenav
+sidenav -done
 speednav
 subnav
 toolbartopnav
 usernav
 
 //connect-theme
-cncpalette
-darktheme
-lighttheme
+cncpalette folder - incomplete
+index.js - done
+darktheme - done
+lighttheme - done
 
 //connect-navmiddleware
+
+settings / reducer - done
 

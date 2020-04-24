@@ -29,6 +29,7 @@ const AppWrapper = styled.div`
   grid-template-areas: 'TopNav TopNav' 'Canvas Canvas';
   overflow: hidden;
 `
+
 class App extends Component {
   render() {
     const { theme } = this.props;
@@ -40,9 +41,10 @@ class App extends Component {
           <ThemeProvider theme={theme ? lightTheme : darkTheme}>
             <BrowserRouter>
               <AppWrapper>
-                <Canvas>
+                <Canvas desktop>
                   <Routes />
                 </Canvas>
+                {/* */}
               </AppWrapper>
             </BrowserRouter>
           </ThemeProvider>
@@ -63,6 +65,9 @@ const mapStateToProps = state => {
   })
 }
 
+const mapDispatchToProps = () => ({})
+
 export default connect(
-  mapStateToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(App);

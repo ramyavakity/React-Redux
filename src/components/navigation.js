@@ -1,5 +1,5 @@
 import appLogo from './../logo.svg';
-import HomeIcon from '@material-ui/icons/Home';
+import { faHome } from "@fortawesome/free-solid-svg-icons";
 
 const handleNavClick = e => {
     e.preventDefault()
@@ -12,8 +12,10 @@ const navigation = {
         to: "/"
     },
     userNavLinks: [
-        { label: 'Settings', to: "/settings", onClickHandler: handleNavClick }
+        { label: 'Settings', to: "/settings", onClickHandler: handleNavClick },
+        { label: 'Feedback', to: "/feedback" },
+        { label: 'Insights', to: "/insights" }
     ],
-    sideNavLinks: [{ type: "exact", icon: HomeIcon, label: "Home", to: "/home" }]
+    sideNavLinks: [{ type: "exact", icon: faHome, label: "Home", to: "/home" }]
 };
 export default navigation;

@@ -4,20 +4,20 @@ import { ThemeProvider, StylesProvider, createMuiTheme } from '@material-ui/core
 import { lightTheme, darkTheme } from '../../connect-theme/index';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
-const CncThemeProvider = ({ childern, themeName, generateClassName }) => {
-    console.log('cnc',themeName);
-    const theme = createMuiTheme(themeName === 'dark' ? darkTheme : lightTheme)
+const CncThemeProvider = ({ children, themeName, generateClassName }) => {
+    console.log('cnc', themeName);
+    const theme = createMuiTheme(themeName === "dark" ? darkTheme : lightTheme)
     return (
         <StylesProvider injectFirst generateClassName={generateClassName}>
             <ThemeProvider theme={theme}>
-                <CssBaseline>{childern}</CssBaseline>
+                <CssBaseline>{children}</CssBaseline>
             </ThemeProvider>
         </StylesProvider>
     )
 }
 
 CncThemeProvider.propTypes = {
-    childern: PropTypes.any,
+    children: PropTypes.any,
     themeName: PropTypes.string,
     generateClassName: PropTypes.func
 }

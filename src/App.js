@@ -37,7 +37,7 @@ class App extends Component {
     return (
       <div>
         <GlobalStyle />
-        <CncThemeProvider themeName={!theme ? 'light' : 'dark'}>
+        <CncThemeProvider themeName={!theme ? "light" : "dark"}>
           <ThemeProvider theme={theme ? lightTheme : darkTheme}>
             <BrowserRouter>
               <AppWrapper>

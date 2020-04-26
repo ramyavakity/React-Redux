@@ -1,7 +1,9 @@
 const path = require('path');
 const srcPath = path.join(__dirname, '../src/');
 const distPath = path.join(__dirname, '../public/');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+
+console.log('srcPath,distPath', srcPath, distPath);
 
 module.exports = {
     target: 'web',

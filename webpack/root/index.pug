@@ -1,18 +1,18 @@
 doctype html
-html(lag="en")
-head
-title="Ramya Vakity"
+html(lang="en")
+    head
+        title="Ramya Vakity"
 
-meta(charset='utf-8')/
-meta(http-equiv='X-UA-Compatatible' content='IE=edge')/
-meta(name='viewport' content='width=device-width, height=device-height, initial-scale=1 ,maximum-scale=1, user-scalable=no')/
-link(rel='stylesheet', type='text/css' , href='/styles/main-bundle.css')/
+        meta(charset='utf-8')/
+        meta(http-equiv='X-UA-Compatatible' content='IE=edge')/
+        meta(name='viewport' content='width=device-width, height=device-height, initial-scale=1 ,maximum-scale=1, user-scalable=no')/
+        link(rel='stylesheet', type='text/css' , href='/styles/main-bundle.css')/
 
-if pageData
-script(type='text/javascript').
-!{pageData}
+        if pageData
+            script(type='text/javascript').
+             !{pageData}
 
-body 
+    body 
 
-#main
-script(src='scripts/main-bundle.js')
+        #main
+        script(src='scripts/main-bundle.js')
